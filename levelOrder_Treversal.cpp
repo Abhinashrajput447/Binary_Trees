@@ -26,10 +26,12 @@ Node* buildTree(vector<int>& preorder) {
   return root;
 }
 
+//Nodes in same line
 void lavelOrder(Node* root) {
   queue<Node*> q;
 
   q.push(root);
+  q.push(NULL);
 
   while(!q.empty()) {
     Node* curr = q.front();
@@ -49,11 +51,45 @@ void lavelOrder(Node* root) {
 }
 
 
+//Nodes in diff - diff line
+void inDiffLine(Node* root) {
+  queue<Node*> q1;
+
+  q1.push(root);
+  q1.push(NULL);
+
+  while(!q1.empty()) {
+    Node* curr = q1.front();
+    q1.pop();
+
+    if(curr == NULL) {
+      if(!q1.empty()) {
+        cout << endl;
+        q1.push(NULL);
+        continue;
+      }else{
+        break;
+      }
+    }
+
+    cout << curr -> data << " ";
+    if(curr -> left != NULL) {
+      q1.push(curr -> left);
+    }
+    if(curr -> right != NULL) {
+      q1.push(curr -> right);
+    }
+  }
+
+  cout << endl;
+}
+
 int main() {
   vector<int> preorder = {1, 2, -1, -1, 3, 4, -1, -1, 5, -1, -1};
 
   Node* root = buildTree(preorder);
 
-  lavelOrder(root);
+  // lavelOrder(root);
+  inDiffLine(root);
   return 0;
 }
