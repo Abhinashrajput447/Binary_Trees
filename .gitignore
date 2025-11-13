@@ -44,4 +44,4 @@ Desktop.ini
 cmake_install.cmake
 Makefile
 
-# If you already committed exe files, use Git to remove from the index (see README notes)
+# If you already committed exe files, use Git to remove from the index (see README notes) 
